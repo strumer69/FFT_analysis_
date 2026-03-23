@@ -7,6 +7,7 @@ REMOTE_SCRIPT="/home/di97qid/sl/FFT/dcdb_logger.sh"
 START_TIME="$1"
 END_TIME="$2"
 LOCAL_DIR="$3"
+LABEL="$4"
 
 # Run remote script and capture output
 REMOTE_OUTPUT=$(ssh ${REMOTE_USER}@${REMOTE_HOST} \
@@ -21,3 +22,4 @@ echo "Remote directory: $REMOTE_DIR"
 
 # Copy to local machine
 scp -r ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_DIR} "${LOCAL_DIR}"
+mv "${LOCAL_DIR}/$(basename $REMOTE_DIR)" "${LOCAL_DIR}/${LABEL}"
