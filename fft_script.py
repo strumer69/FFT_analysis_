@@ -57,7 +57,18 @@ for period in base_dirs:
 
             values = np.array(values)
 
-            time_seconds = [datetime.fromisoformat(ts).timestamp() for ts in timestamps]
+            # time_seconds = [datetime.fromisoformat(ts).timestamp() for ts in timestamps]
+            def fix_timestamp(ts):
+                 if "." in ts:
+                      base, frac = ts.split(".")
+                      frac = frac[:6]  # keep only microseconds
+                      ts = base + "." + frac
+                      return ts
+
+            time_seconds = [
+                datetime.fromisoformat(fix_timestamp(ts)).timestamp()
+                for ts in timestamps
+            ]
             time_seconds = np.array(time_seconds)
 
             dt = np.mean(np.diff(time_seconds))
@@ -93,8 +104,19 @@ for period in base_dirs:
 
             values = np.array(values)
 
-            time_seconds = [datetime.fromisoformat(ts).timestamp() for ts in timestamps]
+            # time_seconds = [datetime.fromisoformat(ts).timestamp() for ts in timestamps]
             time_seconds = np.array(time_seconds)
+            def fix_timestamp(ts):
+                if "." in ts:
+                      base, frac = ts.split(".")
+                      frac = frac[:6]  # keep only microseconds
+                      ts = base + "." + frac
+                      return ts
+
+            time_seconds = [
+                datetime.fromisoformat(fix_timestamp(ts)).timestamp()
+                for ts in timestamps
+            ]
 
             dt = np.mean(np.diff(time_seconds))
             fs = 1.0 / dt
