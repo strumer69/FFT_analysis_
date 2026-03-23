@@ -14,6 +14,8 @@ What follows is a pipeline that connects multiple worlds:
 * A user-friendly GUI (PySide6)
 
 - After cloning this Repo you have to simply run teh auto_GUI.py and wait for few min (depends on the time you choose from DCDB for monitoring.)
+- make sure that you have the script  "/home/di97qid/sl/FFT/dcdb_logger.sh" at the apropriate address.
+
  
 ---
 I am trying to keep it simple. (but its not always easy)
